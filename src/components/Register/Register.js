@@ -31,17 +31,17 @@ class Register extends React.Component{
 				password: this.state.password,
 				name: this.state.name
 			})
-		}).then(response => response.json())
+		})
+		.then(response => response.json())
 		.then(user => {
 			if(user){
-				this.props.loadUser(user);
+				this.props.loadUser(user)
 				this.props.onRouteChange('home');
 			}
 		})
 	}
 
 	render(){
-		const {onRouteChange} = this.props;
 		return(
 			<articles className='br3 ba mv4 w-100 w-50-m w-25-l mw6 shadow-5 center'>
 				<main className="pa4 black-80">
@@ -62,7 +62,7 @@ class Register extends React.Component{
 					  </div>
 					</fieldset>
 					<div className="">
-					  <input onClick={() => onRouteChange('home')} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
+					  <input onClick={this.onSubmitSignIn} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
 					</div>
 				  </div>
 				</main>

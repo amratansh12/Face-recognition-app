@@ -103,21 +103,21 @@ class App extends Component {
     fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
         .then(response => response.json())
         .then(result => {
+          console.log('hi', result);
           if(result){
             fetch('http://localhost:3000/image', {
               method: 'put',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
                 id: this.state.user.id
-              }).then(response => response.json())
-              .then(count => {
-                this.setState({user: {
-                  entries: count
-                }})
               })
             })
-          }
-          this.displayFaceBox(this.calculateFaceLocation(result))
+              .then(response => response.json())
+              .then(count => {
+                this.setState(Object.assign(this.state.user, { entries: count}))
+              })
+            }
+            this.displayFaceBox(this.calculateFaceLocation(result))
         })
         .catch(error => console.log('error', error));  
   }
