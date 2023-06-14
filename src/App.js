@@ -69,7 +69,7 @@ class App extends Component {
     this.setState({imageURL : this.state.input});
 
     /*Clarifai API*/
-    const PAT = 'a8c2645560214a319cc7ac8c3fc0ddde';
+    const PAT = 'pat here';
     const USER_ID = 'amratansh12';       
     const APP_ID = 'my-first-application';
     const MODEL_ID = 'face-detection';
